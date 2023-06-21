@@ -20,7 +20,7 @@ public class BusinessService {
 
     @GlobalTransactional
     public void purchase(String account, String productId, Integer count) {
-        orderFeign.createOrder(account, productId, count);
         storageFeign.deduct(productId, count);
+        orderFeign.createOrder(account, productId, count);
     }
 }
